@@ -7,9 +7,11 @@ import Home from './pages/Home.jsx';
 import Vans from './pages/Vans/Vans.jsx';
 import VanDetail from './pages/Vans/VanDetail.jsx';
 
-import Dashboard from './pages/Host /Dashboard.jsx';
-import Income from './pages/Host /Income.jsx';
-import Reviews from './pages/Host /Reviews.jsx';
+import Dashboard from './pages/Host/Dashboard.jsx';
+import Income from './pages/Host/Income.jsx';
+import Reviews from './pages/Host/Reviews.jsx';
+import VansHost from './pages/Host/VansHost.jsx';
+import VanHostDetail from './pages/Host/VanHostDetail.jsx';
 
 import HostLayout from './components/HostLayout.jsx';
 
@@ -29,6 +31,8 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
+            <Route path="vans" element={<VansHost />} />
+            <Route path="vans/:id" element={<VanHostDetail />} />
           </Route>
         </Route>
       </Routes>
