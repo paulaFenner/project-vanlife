@@ -4,7 +4,7 @@ import Layout from './components/Layout.jsx';
 
 import About from './pages/About.jsx';
 import Home from './pages/Home.jsx';
-import Vans from './pages/Vans/Vans.jsx';
+import Vans, { loader as vansLoader } from './pages/Vans/Vans.jsx';
 import VanDetail from './pages/Vans/VanDetail.jsx';
 
 import Dashboard from './pages/Host/Dashboard.jsx';
@@ -19,31 +19,37 @@ import HostVanPricing from './pages/Host/HostVanPricing.jsx';
 
 import HostLayout from './components/HostLayout.jsx';
 
-import './server.js';
 import NotFound from './pages/NotFound.jsx';
+import Login from './pages/Login.jsx';
+import AuthRequired from './pages/Host/AuthRequired.jsx';
+
+import './server.js';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="*" element={<NotFound />} />
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
+          <Route path="vans" element={<Vans />} errorElement={<Error />} loader={vansLoader} />
           <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="login" element={<Login />} />
 
-          <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="vans" element={<VansHost />} />
-            <Route path="vans/:id" element={<VanHostDetail />}>
-              <Route index element={<HostVanInfo />} />
-              <Route path="pricing" element={<HostVanPricing />} />
-              <Route path="photos" element={<HostVanPhotos />} />
+          <Route element={<AuthRequired />}>
+            <Route path="host" element={<HostLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="reviews" element={<Reviews />} />
+              <Route path="vans" element={<VansHost />} />
+              <Route path="vans/:id" element={<VanHostDetail />}>
+                <Route index element={<HostVanInfo />} />
+                <Route path="pricing" element={<HostVanPricing />} />
+                <Route path="photos" element={<HostVanPhotos />} />
+              </Route>
             </Route>
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
