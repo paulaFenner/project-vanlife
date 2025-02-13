@@ -20,12 +20,14 @@ import HostVanPricing from './pages/Host/HostVanPricing.jsx';
 import HostLayout from './components/HostLayout.jsx';
 
 import './server.js';
+import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="*" element={<NotFound />} />
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />

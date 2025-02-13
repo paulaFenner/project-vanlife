@@ -1,5 +1,6 @@
 @import url(./vans.css);
 @import url(./footer.css);
+@import url(./login.css);
 
 * {
   box-sizing: border-box;
@@ -173,4 +174,14 @@ main {
   color: #161616;
   text-decoration: underline;
   font-weight: 600;
+}
+
+.not-found-container {
+  padding-inline: 26px;
+}
+
+.not-found-container .link-button {
+  width: 100%;
+  background-color: #161616;
+  color: white;
 }
